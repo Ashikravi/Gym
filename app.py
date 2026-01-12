@@ -2,6 +2,9 @@ from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from pydantic import BaseModel
+from typing import Optional
+
 
 app = FastAPI(title="AI Gym Coach")
 
@@ -14,66 +17,37 @@ def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
+
 # ------------------------
-# Log workout
+# Data schema
 # ------------------------
-@app.post("/log-workout")
-def log_workout(
-    exercise: str = Form(...),
-    sets: int = Form(...),
-    reps: int = Form(...),
-    weight: float = Form(...)
-):
-    return {
-        "message": "Workout logged successfully",
-        "data": {
-            "exercise": exercise,
-            "sets": sets,
-            "reps": reps,
-            "weight": weight
-        }
-    }
+class LogInput(BaseModel):
+    exercise: Optional[str] = None
+    sets: Optional[int] = None
+    reps: Optional[int] = None
+    weight: Optional[float] = None
+
+    food: Optional[str] = None
+    quantity: Optional[float] = None
+
+    body_weight: Optional[float] = None
+    waist: Optional[float] = None
 
 
 # ------------------------
-# Log food
+# Single  endpoint
 # ------------------------
-@app.post("/log-food")
-def log_food(
-    food: str = Form(...),
-    quantity: float = Form(...)
-):
-    return {
-        "message": "Food logged successfully",
-        "data": {
-            "food": food,
-            "quantity": quantity
-        }
-    }
+@app.post("/log")
+def log_data(data: LogInput):
+    response = {"message": "Data logged", "received": data}
 
+    if data.exercise:
+        response["coach_feedback"] = "Good job training today 💪"
 
-# ------------------------
-# Body stats
-# ------------------------
-@app.post("/log-body")
-def log_body(
-    weight: float = Form(...),
-    waist: float = Form(...)
-):
-    return {
-        "message": "Body stats saved",
-        "data": {
-            "weight": weight,
-            "waist": waist
-        }
-    }
+    if data.food:
+        response["coach_feedback"] = "Nutrition logged. Stay consistent 🍗"
 
+    if data.body_weight:
+        response["coach_feedback"] = "Tracking progress is key 📈"
 
-# ------------------------
-# AI Coach (placeholder)
-# ------------------------
-@app.get("/coach")
-def ai_coach():
-    return {
-        "coach_message": "You are doing well. Increase protein intake today 💪"
-    }
+    return response
