@@ -32,5 +32,8 @@ FitPilot AI is a personal project that helps track daily workouts, food intake, 
 ├── static/
 │ └── style.css
 │
+├── tests/
+│ └── files for testing
+|
 ├── requirements.txt
 └── README.md
