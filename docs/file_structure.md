@@ -1,4 +1,4 @@
-# FitPilot AI 🏋️‍♂️🍗  
+# FitPilot AI  
 **Personal AI Gym Coach & Nutrition Tracker**
 
 FitPilot AI is a personal project that helps track daily workouts, food intake, and body stats, and provides simple AI-style coaching feedback and suggestions.

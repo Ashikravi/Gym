@@ -1,4 +1,4 @@
-# 🏋️‍♂️ AI Gym Coach — Your Personal Fitness Agent
+# FitPilot AI  — Your Personal Fitness Agent
 
 An AI-powered personal trainer and nutrition coach that tracks workouts, food intake, body stats, and goals — and continuously adapts plans to help users build muscle, lose fat, and stay consistent.
 
@@ -6,7 +6,7 @@ This project demonstrates **AI Agents, FastAPI, LLMs, memory, and real-world dec
 
 ---
 
-## 🚀 What This App Does
+## What This App Does
 
 AI Gym Coach acts like a real trainer:
 
@@ -20,28 +20,28 @@ AI Gym Coach acts like a real trainer:
 
 ---
 
-## 🧠 Core Features
+## Core Features
 
-### 🏋️ Workout Intelligence
+### Workout Intelligence
 - Logs exercises, sets, reps & weights
 - Calculates training volume
 - Tracks progressive overload
 - Detects muscle imbalance and overtraining
 - Suggests next workout
 
-### 🍗 Nutrition Tracking
+### Nutrition Tracking
 - Logs food with quantity
 - Calculates calories, protein, carbs, fat
 - Compares intake vs goals
 - Suggests what to eat next
 
-### 📈 Body & Progress Tracking
+### Body & Progress Tracking
 - Stores body measurements over time
 - Estimates body fat %
 - Calculates muscle gain & fat loss rate
 - Generates weekly progress reports
 
-### 🎯 Goal-Driven AI
+### Goal-Driven AI
 User sets a goal like:
 > “Get lean and muscular in 4 months”
 
@@ -53,7 +53,7 @@ The AI:
 
 ---
 
-## 🤖 AI Agent Architecture
+## AI Agent Architecture
 
 This is not just a chatbot — it is a **goal-driven AI agent**.
 
