@@ -8,7 +8,7 @@
     <h1>🏋️ AI Gym Coach</h1>
 
     <h2>Log Workout</h2>
-    <form action="/log-workout" method="post">
+    <form action="/log" method="post">
         <input name="exercise" placeholder="Exercise" required>
         <input name="sets" type="number" placeholder="Sets" required>
         <input name="reps" type="number" placeholder="Reps" required>
@@ -17,15 +17,15 @@
     </form>
 
     <h2>Log Food</h2>
-    <form action="/log-food" method="post">
+    <form action="/log" method="post">
         <input name="food" placeholder="Food" required>
         <input name="quantity" type="number" placeholder="Quantity (g)" required>
         <button type="submit">Log Food</button>
     </form>
 
     <h2>Log Body Stats</h2>
-    <form action="/log-body" method="post">
-        <input name="weight" type="number" step="0.1" placeholder="Weight (kg)" required>
+    <form action="/log" method="post">
+        <input name="body_weight" type="number" step="0.1" placeholder="Weight (kg)" required>
         <input name="waist" type="number" step="0.1" placeholder="Waist (cm)" required>
         <button type="submit">Save</button>
     </form>
