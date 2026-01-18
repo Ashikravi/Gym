@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Gym Coach Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 16px;
+            margin-top: 20px;
+        }
+
+        input, button, textarea {
+            padding: 10px;
+            margin-top: 10px;
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        button {
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        .chat-box {
+            height: 220px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+            background: #fafafa;
+        }
+
+        .msg-user {
+            margin: 6px 0;
+            padding: 8px;
+            border-radius: 8px;
+            background: #e6f2ff;
+        }
+
+        .msg-ai {
+            margin: 6px 0;
+            padding: 8px;
+            border-radius: 8px;
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>🏋️ AI Gym Coach Dashboard</h2>
+    <p>Track your daily food intake + chat with your AI coach 🤖</p>
+
+    <!-- FOOD TRACKER -->
+    <div class="card">
+        <h3>🍗 Food Tracker</h3>
+
+        <form id="foodForm">
+            <input id="foodName" type="text" placeholder="Food name (ex: Rice, Egg, Chicken)" required>
+            <input id="foodQty" type="number" placeholder="Quantity (grams)" required>
+            <button type="submit">Add Food</button>
+        </form>
+
+        <h4>📌 Today's Intake</h4>
+        <ul id="foodList"></ul>
+    </div>
+
+    <!-- AI CHAT -->
+    <div class="card">
+        <h3>🤖 Chat with AI Coach</h3>
+
+        <div class="chat-box" id="chatBox">
+            <div class="msg-ai"><b>AI Coach:</b> Hi Alan 👋 Tell me what you ate today or ask workout tips!</div>
+        </div>
+
+        <form id="chatForm">
+            <input id="chatInput" type="text" placeholder="Type your message..." required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script>
+        // -----------------------------
+        // FOOD TRACKER (frontend only)
+        // -----------------------------
+        const foodForm = document.getElementById("foodForm");
+        const foodList = document.getElementById("foodList");
+
+        foodForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const foodName = document.getElementById("foodName").value;
+            const foodQty = document.getElementById("foodQty").value;
+
+            const li = document.createElement("li");
+            li.innerText = `${foodName} - ${foodQty} g`;
+            foodList.appendChild(li);
+
+            foodForm.reset();
+        });
+
+
+        // -----------------------------
+        // AI CHAT UI (frontend only)
+        // -----------------------------
+        const chatForm = document.getElementById("chatForm");
+        const chatBox = document.getElementById("chatBox");
+
+        chatForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const input = document.getElementById("chatInput");
+            const userMsg = input.value;
+
+            // show user msg
+            const userDiv = document.createElement("div");
+            userDiv.className = "msg-user";
+            userDiv.innerHTML = `<b>You:</b> ${userMsg}`;
+            chatBox.appendChild(userDiv);
+
+            // temporary AI reply (no backend yet)
+            const aiDiv = document.createElement("div");
+            aiDiv.className = "msg-ai";
+            aiDiv.innerHTML = `<b>AI Coach:</b> Nice! I received: "${userMsg}" ✅ (AI API not connected yet)`;
+            chatBox.appendChild(aiDiv);
+
+            chatBox.scrollTop = chatBox.scrollHeight;
+            input.value = "";
+        });
+    </script>
+
+</body>
+</html>
