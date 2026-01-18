@@ -6,3 +6,6 @@ python-multipart
 python-dotenv
 psycopg2
 sqlalchemy
+
+supabase
+pydantic[email]
